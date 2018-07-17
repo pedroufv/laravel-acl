@@ -2,11 +2,11 @@
 
 namespace Ancora\Http\Controllers\Auth;
 
-use Ancora\User;
 use Ancora\Http\Controllers\Controller;
+use Ancora\Entities\User;
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
-use Illuminate\Foundation\Auth\RegistersUsers;
 
 class RegisterController extends Controller
 {
@@ -59,7 +59,7 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \Ancora\User
+     * @return \Ancora\Entities\User
      */
     protected function create(array $data)
     {
