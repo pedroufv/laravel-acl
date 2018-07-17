@@ -4,10 +4,11 @@ namespace Ancora\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Larapacks\Authorization\Traits\UserRolesTrait;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use Notifiable, UserRolesTrait;
 
     /**
      * The attributes that are mass assignable.

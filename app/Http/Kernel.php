@@ -59,5 +59,7 @@ class Kernel extends HttpKernel
         'guest' => \Ancora\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'permission' => \Larapacks\Authorization\Middleware\PermissionMiddleware::class,
+        'role' => \Larapacks\Authorization\Middleware\RoleMiddleware::class,
     ];
 }
