@@ -150,15 +150,16 @@ return [
         /*
          * Package Service Providers...
          */
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
         /*
          * Application Service Providers...
          */
-        App\Providers\AppServiceProvider::class,
-        App\Providers\AuthServiceProvider::class,
-        // App\Providers\BroadcastServiceProvider::class,
-        App\Providers\EventServiceProvider::class,
-        App\Providers\RouteServiceProvider::class,
+        Ancora\Providers\AppServiceProvider::class,
+        Ancora\Providers\AuthServiceProvider::class,
+        // Ancora\Providers\BroadcastServiceProvider::class,
+        Ancora\Providers\EventServiceProvider::class,
+        Ancora\Providers\RouteServiceProvider::class,
 
     ],
 
