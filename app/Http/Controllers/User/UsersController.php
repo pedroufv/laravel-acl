@@ -1,30 +1,31 @@
 <?php
 
-namespace Ancora\Http\Controllers;
+namespace Ancora\Http\Controllers\User;
 
-use Ancora\Http\Requests\RoleCreateRequest;
-use Ancora\Http\Requests\RoleUpdateRequest;
-use Ancora\Repositories\RoleRepository;
+use Ancora\Http\Controllers\Controller;
+use Ancora\Http\Requests\UserCreateRequest;
+use Ancora\Http\Requests\UserUpdateRequest;
+use Ancora\Repositories\UserRepository;
 use Illuminate\Http\Response;
 
 /**
- * Class RolesController.
+ * Class UsersController.
  *
  * @package namespace Ancora\Http\Controllers;
  */
-class RolesController extends Controller
+class UsersController extends Controller
 {
     /**
-     * @var RoleRepository
+     * @var UserRepository
      */
     protected $repository;
 
     /**
-     * RolesController constructor.
+     * UsersController constructor.
      *
-     * @param RoleRepository $repository
+     * @param UserRepository $repository
      */
-    public function __construct(RoleRepository $repository)
+    public function __construct(UserRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -36,35 +37,35 @@ class RolesController extends Controller
      */
     public function index()
     {
-        $roles = $this->repository->all();
+        $users = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $roles,
+                'data' => $users,
             ]);
         }
 
-        return view('roles.index', compact('roles'));
+        return view('users.index', compact('users'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  RoleCreateRequest $request
+     * @param  UserCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      */
-    public function store(RoleCreateRequest $request)
+    public function store(UserCreateRequest $request)
     {
         try {
 
-            $role = $this->repository->create($request->all());
+            $user = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'Role created.',
-                'data'    => $role->toArray(),
+                'message' => 'User created.',
+                'data'    => $user->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -94,16 +95,16 @@ class RolesController extends Controller
      */
     public function show($id)
     {
-        $role = $this->repository->find($id);
+        $user = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $role,
+                'data' => $user,
             ]);
         }
 
-        return view('roles.show', compact('role'));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -115,29 +116,29 @@ class RolesController extends Controller
      */
     public function edit($id)
     {
-        $role = $this->repository->find($id);
+        $user = $this->repository->find($id);
 
-        return view('roles.edit', compact('role'));
+        return view('users.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  RoleUpdateRequest $request
+     * @param  UserUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      */
-    public function update(RoleUpdateRequest $request, $id)
+    public function update(UserUpdateRequest $request, $id)
     {
         try {
 
-            $role = $this->repository->update($request->all(), $id);
+            $user = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'Role updated.',
-                'data'    => $role->toArray(),
+                'message' => 'User updated.',
+                'data'    => $user->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -174,11 +175,11 @@ class RolesController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'Role deleted.',
+                'message' => 'User deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'Role deleted.');
+        return redirect()->back()->with('message', 'User deleted.');
     }
 }

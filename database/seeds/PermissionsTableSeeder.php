@@ -14,14 +14,13 @@ class PermissionsTableSeeder extends Seeder
      */
     public function run()
     {
-
         /**
          *  Define permissoes para rotas do admin
          *
          *  @var \Illuminate\Routing\Route $route
          */
         foreach (Route::getRoutes() as $route) {
-            if ($route->getPrefix() == '/admin'
+            if ($route->getPrefix() == 'admin'
                 AND $route->getName() != 'admin.'
                 AND substr($route->getName(), -4) != 'data'
                 AND substr($route->getName(), -5) != 'store'

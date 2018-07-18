@@ -160,6 +160,7 @@ return [
         Ancora\Providers\AuthServiceProvider::class,
         // Ancora\Providers\BroadcastServiceProvider::class,
         Ancora\Providers\EventServiceProvider::class,
+        Ancora\Providers\RepositoryServiceProvider::class,
         Ancora\Providers\RouteServiceProvider::class,
 
     ],

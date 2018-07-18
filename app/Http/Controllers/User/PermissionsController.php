@@ -1,30 +1,31 @@
 <?php
 
-namespace Ancora\Http\Controllers;
+namespace Ancora\Http\Controllers\User;
 
-use Ancora\Http\Requests\UserCreateRequest;
-use Ancora\Http\Requests\UserUpdateRequest;
-use Ancora\Repositories\UserRepository;
+use Ancora\Http\Controllers\Controller;
+use Ancora\Http\Requests\PermissionCreateRequest;
+use Ancora\Http\Requests\PermissionUpdateRequest;
+use Ancora\Repositories\PermissionRepository;
 use Illuminate\Http\Response;
 
 /**
- * Class UsersController.
+ * Class PermissionsController.
  *
  * @package namespace Ancora\Http\Controllers;
  */
-class UsersController extends Controller
+class PermissionsController extends Controller
 {
     /**
-     * @var UserRepository
+     * @var PermissionRepository
      */
     protected $repository;
 
     /**
-     * UsersController constructor.
+     * PermissionsController constructor.
      *
-     * @param UserRepository $repository
+     * @param PermissionRepository $repository
      */
-    public function __construct(UserRepository $repository)
+    public function __construct(PermissionRepository $repository)
     {
         $this->repository = $repository;
     }
@@ -36,35 +37,35 @@ class UsersController extends Controller
      */
     public function index()
     {
-        $users = $this->repository->all();
+        $permissions = $this->repository->all();
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $users,
+                'data' => $permissions,
             ]);
         }
 
-        return view('users.index', compact('users'));
+        return view('permissions.index', compact('permissions'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  UserCreateRequest $request
+     * @param  PermissionCreateRequest $request
      *
      * @return \Illuminate\Http\Response
      *
      */
-    public function store(UserCreateRequest $request)
+    public function store(PermissionCreateRequest $request)
     {
         try {
 
-            $user = $this->repository->create($request->all());
+            $permission = $this->repository->create($request->all());
 
             $response = [
-                'message' => 'User created.',
-                'data'    => $user->toArray(),
+                'message' => 'Permission created.',
+                'data'    => $permission->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -94,16 +95,16 @@ class UsersController extends Controller
      */
     public function show($id)
     {
-        $user = $this->repository->find($id);
+        $permission = $this->repository->find($id);
 
         if (request()->wantsJson()) {
 
             return response()->json([
-                'data' => $user,
+                'data' => $permission,
             ]);
         }
 
-        return view('users.show', compact('user'));
+        return view('permissions.show', compact('permission'));
     }
 
     /**
@@ -115,29 +116,29 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->repository->find($id);
+        $permission = $this->repository->find($id);
 
-        return view('users.edit', compact('user'));
+        return view('permissions.edit', compact('permission'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  UserUpdateRequest $request
+     * @param  PermissionUpdateRequest $request
      * @param  string            $id
      *
      * @return Response
      *
      */
-    public function update(UserUpdateRequest $request, $id)
+    public function update(PermissionUpdateRequest $request, $id)
     {
         try {
 
-            $user = $this->repository->update($request->all(), $id);
+            $permission = $this->repository->update($request->all(), $id);
 
             $response = [
-                'message' => 'User updated.',
-                'data'    => $user->toArray(),
+                'message' => 'Permission updated.',
+                'data'    => $permission->toArray(),
             ];
 
             if ($request->wantsJson()) {
@@ -174,11 +175,11 @@ class UsersController extends Controller
         if (request()->wantsJson()) {
 
             return response()->json([
-                'message' => 'User deleted.',
+                'message' => 'Permission deleted.',
                 'deleted' => $deleted,
             ]);
         }
 
-        return redirect()->back()->with('message', 'User deleted.');
+        return redirect()->back()->with('message', 'Permission deleted.');
     }
 }
