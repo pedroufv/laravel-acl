@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace Ancora\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 use Larapacks\Authorization\Traits\RolePermissionsTrait;
