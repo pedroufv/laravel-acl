@@ -68,7 +68,7 @@
                 </div>
             </div>
         </nav>
-        @if(Route::currentRouteName() != 'admin.home')
+        @if(auth()->check() AND Route::currentRouteName() != 'admin.home')
             <div class="container">
                 <div class="row">
                     {{ Breadcrumbs::render(Route::currentRouteName(), Route::getCurrentRoute()) }}
