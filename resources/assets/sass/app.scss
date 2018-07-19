@@ -11,11 +11,15 @@
 // Font Awesome
 @import "~font-awesome/scss/font-awesome.scss";
 
+.breadcrumb {
+  background-color: transparent;
+}
+
+.card-header {
+  background-color: transparent;
+}
+
 .navbar-laravel {
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
-}
-
-.breadcrumb {
-  background-color: transparent;
 }

@@ -1,0 +1,87 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API Ancora",
+        "version": "0.0.1"
+    },
+    "basePath": "/",
+    "paths": {
+        "/admin/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "List users",
+                "parameters": [
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "description": "Add relationship",
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Filter by value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchFields",
+                        "in": "query",
+                        "description": "Condition",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchJoin",
+                        "in": "query",
+                        "description": "Filter by value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Show only filtered",
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order by column",
+                        "type": "string"
+                    },
+                    {
+                        "name": "sortedBy",
+                        "in": "query",
+                        "description": "Asc or Desc",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Itens per page",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "status_id",
+                        "in": "query",
+                        "description": "Filtered by status",
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User collection"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

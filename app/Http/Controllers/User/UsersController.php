@@ -3,11 +3,13 @@
 namespace Ancora\Http\Controllers\User;
 
 use Ancora\Entities\Role;
+use Ancora\Entities\User;
 use Ancora\Http\Controllers\Controller;
 use Ancora\Http\Requests\UserCreateRequest;
 use Ancora\Http\Requests\UserUpdateRequest;
 use Ancora\Repositories\UserRepository;
 use Illuminate\Http\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class UsersController.
@@ -48,6 +50,17 @@ class UsersController extends Controller
         }
 
         return view('users.index', compact('users'));
+    }
+
+    public function data()
+    {
+        $users = User::select(['id', 'name', 'email', 'created_at', 'updated_at']);
+
+        return Datatables::of($users)
+            ->addColumn('action', function ($user) {
+                return '<a href="/admin/users/'.$user->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Edit</a>';
+            })
+            ->make(true);
     }
 
     /**
