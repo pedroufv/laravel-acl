@@ -2,6 +2,7 @@
 
 namespace Ancora\Http\Controllers\User;
 
+use Ancora\Entities\Role;
 use Ancora\Http\Controllers\Controller;
 use Ancora\Http\Requests\UserCreateRequest;
 use Ancora\Http\Requests\UserUpdateRequest;
@@ -47,6 +48,18 @@ class UsersController extends Controller
         }
 
         return view('users.index', compact('users'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $roles = Role::all();
+
+        return view('users.create', compact('employees', 'roles'));
     }
 
     /**
