@@ -153,6 +153,7 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Larapacks\Authorization\AuthorizationServiceProvider::class,
         Lavary\Menu\ServiceProvider::class,
+        DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider::class,
 
         /*
          * Application Service Providers...

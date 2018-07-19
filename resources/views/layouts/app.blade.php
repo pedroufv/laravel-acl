@@ -71,7 +71,13 @@
                 </div>
             </div>
         </nav>
-
+        @if(Route::currentRouteName() != 'admin.home')
+            <div class="container">
+                <div class="row">
+                    {{ Breadcrumbs::render(Route::currentRouteName(), Route::getCurrentRoute()) }}
+                </div>
+            </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>

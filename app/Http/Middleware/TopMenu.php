@@ -20,13 +20,14 @@ class TopMenu
             \Menu::make('topMenu', function($menu) {
 
                 if (Auth::user()->can('admin.users.index') OR Auth::user()->can('admin.roles.index')) {
-                    $menu->add('Usuários');
+                    $title = \Lang::get('admin.config');
+                    $menu->add($title);
 
                     if (Auth::user()->can('admin.users.index'))
-                        $menu->get('usuarios')->add('Usuarios', array('route' => 'admin.users.index'));
+                        $menu->get(str_slug($title))->add(\Lang::get('admin.users.index'), array('route' => 'admin.users.index'));
 
                     if (Auth::user()->can('admin.roles.index'))
-                        $menu->get('usuarios')->add('Grupos', array('route' => 'admin.roles.index'));
+                        $menu->get(str_slug($title))->add(\Lang::get('admin.roles.index'), array('route' => 'admin.roles.index'));
                 }
             });
         }

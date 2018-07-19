@@ -68,4 +68,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 6. php artisan key:generate
 7. php artisan migrate --seed
 8. see the usernamme in database with password 'secret'
+9. npm run dev
 
