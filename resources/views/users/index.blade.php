@@ -26,7 +26,7 @@
                                     <th>@lang('general.email')</th>
                                     <th>@lang('general.created_at')</th>
                                     <th>@lang('general.updated_at')</th>
-                                    <th style="width: 10%;">@lang('general.action')</th>
+                                    <th style="width: 10%;">@lang('general.actions')</th>
                                 </tr>
                                 </thead>
                             </table>
