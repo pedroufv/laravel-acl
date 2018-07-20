@@ -62,9 +62,9 @@ class UsersController extends Controller
     {
         try {
 
-            User::create($request->all());
+            $user = User::create($request->all());
 
-            return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.store')]);
+            return redirect()->route('admin.users.show', ['id' => $user->id])->with(['type' => 'success', 'message' => __('messages.success.store')]);
         } catch (\Exception $e) {
             return redirect()->back()->withErrors($e->getMessage())->withInput();
         }
@@ -115,7 +115,7 @@ class UsersController extends Controller
 
             $user->update($request->all());
 
-            return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.update')]);
+            return redirect()->route('admin.users.show', ['id' => $user->id])->with(['type' => 'success', 'message' => __('messages.success.update')]);
         } catch (\Exception $e) {
 
             return redirect()->back()->withErrors($e->getMessage())->withInput();
