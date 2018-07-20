@@ -39,66 +39,61 @@
 @endsection
 
 @push('scripts')
-<script id="script">
-    $(function () {
-        $('#users-table').DataTable({
-            serverSide: true,
-            processing: true,
-            ajax: '{{ url("admin/users/data") }}',
-            columns: [
-                {data: 'id', name: 'id'},
-                {data: 'name', name: 'name'},
-                {data: 'email', name: 'email'},
-                {data: 'created_at', name: 'created_at'},
-                {data: 'updated_at', name: 'updated_at'},
-                {data: 'action', name: 'action', orderable: false, searchable: false}
-            ],
-            "language": {
-                "decimal":        "",
-                "emptyTable":     "Sem dados disponíveis na tabela",
-                "info":           "Exibindo _START_ até _END_ de _TOTAL_ entradas",
-                "infoEmpty":      "Exibindo 0 até 0 de 0 entradas",
-                "infoFiltered":   "(filtered from _MAX_ total entries)",
-                "infoPostFix":    "",
-                "thousands":      ",",
-                "lengthMenu":     "Mostrar _MENU_ registros",
-                "loadingRecords": "Loading...",
-                "processing":     "Processando...",
-                "search":         "Busca:",
-                "zeroRecords":    "Nenhuma resultado encontrado",
-                "paginate": {
-                    "first":      "Primeiro",
-                    "last":       "Último",
-                    "next":       "Próximo",
-                    "previous":   "Anterior"
-                },
-                "aria": {
-                    "sortAscending":  ": activate to sort column ascending",
-                    "sortDescending": ": activate to sort column descending"
-                }
-            }
-        });
-    });
-</script>
-<script type="text/javascript">
-    function usersDelete(deleteForm, e) {
-        e.preventDefault();
-        swal({
-                title: "Tem certeza que deseja excluir?",
-                text: "Não será possível recuperar os dados deste usuário!",
-                type: "warning",
-                showCancelButton: true,
-                confirmButtonColor: "#DD6B55",
-                confirmButtonText: "Sim, excluir!",
-                cancelButtonText: "Não!",
-                closeOnConfirm: false
-            },
-            function(isConfirm) {
-                if (isConfirm) {
-                    $(deleteForm).submit();
-                    return true;
+    <script id="script">
+        $(function () {
+            $('#users-table').DataTable({
+                serverSide: true,
+                processing: true,
+                ajax: '{{ url("admin/users/data") }}',
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'email', name: 'email'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ],
+                "language": {
+                    "decimal": "",
+                    "emptyTable": "Sem dados disponíveis na tabela",
+                    "info": "Exibindo _START_ até _END_ de _TOTAL_ entradas",
+                    "infoEmpty": "Exibindo 0 até 0 de 0 entradas",
+                    "infoFiltered": "(filtered from _MAX_ total entries)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lengthMenu": "Mostrar _MENU_ registros",
+                    "loadingRecords": "Loading...",
+                    "processing": "Processando...",
+                    "search": "Busca:",
+                    "zeroRecords": "Nenhuma resultado encontrado",
+                    "paginate": {
+                        "first": "Primeiro",
+                        "last": "Último",
+                        "next": "Próximo",
+                        "previous": "Anterior"
+                    },
+                    "aria": {
+                        "sortAscending": ": activate to sort column ascending",
+                        "sortDescending": ": activate to sort column descending"
+                    }
                 }
             });
-    }
-</script>
+        });
+    </script>
+    <script type="text/javascript">
+        function usersDelete(deleteForm, e) {
+            e.preventDefault();
+            swal({
+                title: "Are you sure?",
+                text: "Once deleted, you will not be able to recover this!",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            }).then((willDelete) => {
+                if (willDelete) {
+                    $(deleteForm).submit();
+                }
+            });
+        }
+    </script>
 @endpush

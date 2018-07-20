@@ -32,9 +32,13 @@ class UsersController extends Controller
         $users = User::select(['id', 'name', 'email', 'created_at', 'updated_at']);
 
         return Datatables::of($users)
-            ->addColumn('action', function ($user) {
-                return '<a href="/admin/users/'.$user->id.'/edit" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i>Edit</a>';
+            ->editColumn('name', function ($user){
+                return '<a href="'.route('admin.users.show', ['id' => $user->id]).'">'.$user->name.'</a>';
             })
+            ->addColumn('action', function ($user) {
+                return view('partials.actions', ['id' => $user->id, 'table' => 'users']);
+            })
+            ->rawColumns(['name', 'action'])
             ->make(true);
     }
 

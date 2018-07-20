@@ -57,3 +57,6 @@ if (token) {
 
 require( 'datatables.net' );
 require( 'datatables.net-bs4' );
+require( 'sweetalert' );
+
+
