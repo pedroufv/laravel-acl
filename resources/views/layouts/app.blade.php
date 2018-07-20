@@ -75,6 +75,18 @@
                 </div>
             </div>
         @endif
+        @if (session('message'))
+            <div class="container">
+                <div class="row">
+                    <div class="col alert alert-{{session('type')}} alert-dismissible fade show" role="alert">
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <strong>@lang('general.'.session('type'))</strong> {{ session('message') }}.
+                    </div>
+                </div>
+            </div>
+        @endif
         <main class="py-4">
             @yield('content')
         </main>

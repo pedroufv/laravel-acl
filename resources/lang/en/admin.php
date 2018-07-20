@@ -7,6 +7,7 @@ return [
         'index' => 'Roles'
     ],
     'users' => [
-        'index' => 'Users'
+        'index' => 'Users',
+        'edit'  => 'User Edit'
     ]
 ];
