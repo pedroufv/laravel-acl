@@ -143,9 +143,9 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        $user = $this->repository->find($id);
+        $this->authorize('admin.users.edit', [$id]);
 
-        $this->authorize('admin.users.edit', [$user->id]);
+        $user = $this->repository->find($id);
 
         return view('users.edit', compact('user'));
     }
@@ -154,18 +154,20 @@ class UsersController extends Controller
      * Update the specified resource in storage.
      *
      * @param  UserUpdateRequest $request
-     * @param  string            $id
+     * @param  string $id
      *
      * @return Response
      *
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function update(UserUpdateRequest $request, $id)
     {
+        $this->authorize('admin.users.edit', [$id]);
+
         try {
 
             $user = $this->repository->update($request->all(), $id);
 
-            $this->authorize('admin.users.edit', [$user->id]);
 
             $response = [
                 'message' => 'User updated.',
@@ -198,9 +200,12 @@ class UsersController extends Controller
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy($id)
     {
+        $this->authorize('admin.users.destroy', [$id]);
+
         $deleted = $this->repository->delete($id);
 
         if (request()->wantsJson()) {

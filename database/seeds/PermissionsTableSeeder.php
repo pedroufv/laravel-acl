@@ -47,6 +47,15 @@ class PermissionsTableSeeder extends Seeder
 
                     $permission->save();
                 }
+
+                if($route->getName() == 'admin.users.destroy') {
+                    $permission = Permission::find($id);
+                    $permission->closure = function ($user, $id) {
+                        return $user->id != $id && $user->hasRole('administrator');
+                    };
+
+                    $permission->save();
+                }
             }
         }
     }
