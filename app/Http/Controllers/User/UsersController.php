@@ -139,10 +139,13 @@ class UsersController extends Controller
      * @param  int $id
      *
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function edit($id)
     {
         $user = $this->repository->find($id);
+
+        $this->authorize('admin.users.edit', [$user->id]);
 
         return view('users.edit', compact('user'));
     }
@@ -161,6 +164,8 @@ class UsersController extends Controller
         try {
 
             $user = $this->repository->update($request->all(), $id);
+
+            $this->authorize('admin.users.edit', [$user->id]);
 
             $response = [
                 'message' => 'User updated.',
