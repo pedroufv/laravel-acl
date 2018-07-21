@@ -68,26 +68,26 @@
                 </div>
             </div>
         </nav>
-        @if(auth()->check() AND Route::currentRouteName() != 'admin.home')
-            <div class="container">
-                <div class="row">
-                    {{ Breadcrumbs::render(Route::currentRouteName(), Route::getCurrentRoute()) }}
-                </div>
-            </div>
-        @endif
-        @if (session('message'))
-            <div class="container">
-                <div class="row">
-                    <div class="col alert alert-{{session('type')}} alert-dismissible fade show" role="alert">
-                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                        </button>
-                        <strong>@lang('general.'.session('type'))</strong> {{ session('message') }}.
+        <main class="py-4">
+            @if(auth()->check() AND Route::currentRouteName() != 'admin.home')
+                <div class="container">
+                    <div class="row">
+                        {{ Breadcrumbs::render(Route::currentRouteName(), Route::getCurrentRoute()) }}
                     </div>
                 </div>
-            </div>
-        @endif
-        <main class="py-4">
+            @endif
+            @if (session('message'))
+                <div class="container">
+                    <div class="row">
+                        <div class="col alert alert-{{session('type')}} alert-dismissible fade show" role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong>@lang('general.'.session('type'))</strong> {{ session('message') }}.
+                        </div>
+                    </div>
+                </div>
+            @endif
             @yield('content')
         </main>
     </div>

@@ -98,7 +98,13 @@ class UsersController extends Controller
     {
         $this->authorize('admin.users.edit', [$user->id]);
 
-        return view('users.edit', compact('user'));
+        $roles = Role::all();
+
+        $roles->each(function ($role) use ($user) {
+            $role->check = $user->roles->contains($role);
+        });
+
+        return view('users.edit', compact('user', 'roles'));
     }
 
     /**
