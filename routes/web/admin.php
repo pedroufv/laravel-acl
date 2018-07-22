@@ -2,9 +2,7 @@
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('permissions', 'User\PermissionsController');
+Route::resource('roles', 'Admin\User\RolesController');
 
-Route::resource('roles', 'User\RolesController');
-
-Route::get('/users/data', 'User\UsersController@data')->name('users.data');
-Route::resource('users', 'User\UsersController');
+Route::get('/users/data', 'Admin\User\UsersController@data')->name('users.data');
+Route::resource('users', 'Admin\User\UsersController');

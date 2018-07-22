@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers\User;
+namespace Ancora\Http\Controllers\Admin\User;
 
 use Ancora\Http\Controllers\Controller;
 use Ancora\Http\Requests\RoleCreateRequest;

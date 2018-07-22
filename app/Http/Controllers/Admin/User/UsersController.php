@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers\User;
+namespace Ancora\Http\Controllers\Admin\User;
 
 use Ancora\Entities\Role;
 use Ancora\Entities\User;
@@ -24,7 +24,7 @@ class UsersController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        return view('admin.users.index');
     }
 
     public function data()
@@ -36,7 +36,7 @@ class UsersController extends Controller
                 return '<a href="'.route('admin.users.show', ['id' => $user->id]).'">'.$user->name.'</a>';
             })
             ->addColumn('action', function ($user) {
-                return view('partials.actions', ['id' => $user->id, 'table' => 'users']);
+                return view('admin.partials.actions', ['id' => $user->id, 'table' => 'users']);
             })
             ->rawColumns(['name', 'action'])
             ->make(true);
@@ -51,7 +51,7 @@ class UsersController extends Controller
     {
         $roles = Role::all();
 
-        return view('users.create', compact('employees', 'roles'));
+        return view('admin.users.create', compact('employees', 'roles'));
     }
 
     /**
@@ -85,7 +85,7 @@ class UsersController extends Controller
      */
     public function show(User $user)
     {
-        return view('users.show', compact('user'));
+        return view('admin.users.show', compact('user'));
     }
 
     /**
@@ -106,7 +106,7 @@ class UsersController extends Controller
             $role->check = $user->roles->contains($role);
         });
 
-        return view('users.edit', compact('user', 'roles'));
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
