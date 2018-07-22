@@ -1,8 +1,8 @@
 <?php
 
-namespace Ancora\Http\Controllers\Auth;
+namespace Ancora\Http\Controllers\Web\Auth;
 
-use Ancora\Http\Controllers\Controller;
+use Ancora\Http\Controllers\Web\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ResetPasswordController extends Controller

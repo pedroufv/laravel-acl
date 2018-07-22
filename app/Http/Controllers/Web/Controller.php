@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers;
+namespace Ancora\Http\Controllers\Web;
 
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Routing\Controller as BaseController;

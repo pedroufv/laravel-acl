@@ -32,5 +32,20 @@ class UserRepositoryEloquent extends BaseRepository implements UserRepository
     {
         $this->pushCriteria(app(CustomRequestCriteria::class));
     }
-    
+
+
+    /**
+     * @param array $attributes
+     * @return mixed
+     * @throws \Prettus\Validator\Exceptions\ValidatorException
+     */
+    public function create(array $attributes)
+    {
+        $user = parent::create($attributes);
+
+        if ($attributes['roles'])
+            $user->roles()->sync($attributes['roles']);
+
+        return $user;
+    }
 }

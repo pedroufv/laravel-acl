@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers;
+namespace Ancora\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 

@@ -38,4 +38,16 @@ class User extends Authenticatable
     {
         $this->attributes['password'] = \Hash::make($value);
     }
+
+    /**
+     * Add role on payload
+     *
+     * @return array
+     */
+    public function customClaims()
+    {
+        return [
+            'role' => $this->isAdministrator() ? 'admin' :  'user',
+        ];
+    }
 }

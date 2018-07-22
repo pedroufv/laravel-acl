@@ -41,6 +41,7 @@ class Kernel extends HttpKernel
         'api' => [
             'throttle:60,1',
             'bindings',
+//            \Barryvdh\Cors\HandleCors::class,
         ],
     ];
 
@@ -60,6 +61,8 @@ class Kernel extends HttpKernel
         'guest' => \Ancora\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'jwt.auth' => \Ancora\Http\Middleware\VerifyJWTToken::class,
+        'cors' => \Barryvdh\Cors\HandleCors::class,
         'permission' => \Larapacks\Authorization\Middleware\PermissionMiddleware::class,
         'role' => \Larapacks\Authorization\Middleware\RoleMiddleware::class,
     ];

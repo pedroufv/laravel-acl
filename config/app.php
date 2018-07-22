@@ -148,10 +148,21 @@ return [
         Illuminate\View\ViewServiceProvider::class,
 
         /*
-         * Package Service Providers...
+         * Package Service Providers
          */
-        Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Larapacks\Authorization\AuthorizationServiceProvider::class,
+
+        /*
+         * Api Package Service Providers
+         */
+        Barryvdh\Cors\ServiceProvider::class,
+        L5Swagger\L5SwaggerServiceProvider::class,
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+
+        /*
+         * Web Package Service Providers...
+         */
         Lavary\Menu\ServiceProvider::class,
         DaveJamesMiller\Breadcrumbs\BreadcrumbsServiceProvider::class,
         Yajra\DataTables\DataTablesServiceProvider::class,
@@ -216,6 +227,8 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Menu'      => Lavary\Menu\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
+        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
+        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];

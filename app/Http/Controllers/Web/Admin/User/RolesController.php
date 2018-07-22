@@ -1,10 +1,10 @@
 <?php
 
-namespace Ancora\Http\Controllers\Admin\User;
+namespace Ancora\Http\Controllers\Web\Admin\User;
 
 use Ancora\Entities\Permission;
 use Ancora\Entities\Role;
-use Ancora\Http\Controllers\Controller;
+use Ancora\Http\Controllers\Web\Controller;
 use Ancora\Http\Requests\RoleCreateRequest;
 use Ancora\Http\Requests\RoleUpdateRequest;
 use Illuminate\Http\Response;

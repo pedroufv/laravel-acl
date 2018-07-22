@@ -41,9 +41,6 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                            </li>
                         @else
                             @include(config('laravel-menu.views.bootstrap-items'), array('items' => $topMenu->roots()))
                             <li class="nav-item dropdown">

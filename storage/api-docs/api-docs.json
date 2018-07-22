@@ -1,19 +1,132 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "API Ancora",
+        "title": "Ancora",
         "version": "0.0.1"
     },
-    "basePath": "/",
+    "basePath": "/api",
     "paths": {
-        "/admin/users": {
+        "/login": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Request token JWT",
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "email": {
+                                    "description": "Request token JWT",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "Request token JWT",
+                                    "type": "string"
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Token JWT"
+                    }
+                }
+            }
+        },
+        "/logout": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "To revoke token JWT",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
+                    }
+                }
+            }
+        },
+        "/refresh_token": {
+            "post": {
+                "tags": [
+                    "auth"
+                ],
+                "summary": "Refresh token JWT",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Token JWT"
+                    }
+                }
+            }
+        },
+        "/auth/user": {
             "get": {
                 "tags": [
-                    "users"
+                    "auth"
+                ],
+                "summary": "Get authenticated user",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "description": "Add relationship",
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Show only filtered",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Get auth user"
+                    }
+                }
+            }
+        },
+        "/roles": {
+            "get": {
+                "tags": [
+                    "roles"
                 ],
                 "summary": "Display a listing of the resource.",
-                "description": "List users",
+                "description": "Roles List",
                 "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
                     {
                         "name": "with",
                         "in": "query",
@@ -67,17 +180,295 @@
                         "in": "query",
                         "description": "Itens per page",
                         "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Roles collection"
+                    }
+                }
+            }
+        },
+        "/roles/{id}": {
+            "get": {
+                "tags": [
+                    "roles"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "Role Details",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
                     },
                     {
-                        "name": "status_id",
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "with",
                         "in": "query",
-                        "description": "Filtered by status",
+                        "description": "Add relationship",
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Show only filtered",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "Role object"
+                    }
+                }
+            }
+        },
+        "/users": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Display a listing of the resource.",
+                "description": "Users List",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "description": "Add relationship",
+                        "type": "string"
+                    },
+                    {
+                        "name": "search",
+                        "in": "query",
+                        "description": "Filter by value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchFields",
+                        "in": "query",
+                        "description": "Condition",
+                        "type": "string"
+                    },
+                    {
+                        "name": "searchJoin",
+                        "in": "query",
+                        "description": "Filter by value",
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Show only filtered",
+                        "type": "string"
+                    },
+                    {
+                        "name": "orderBy",
+                        "in": "query",
+                        "description": "Order by column",
+                        "type": "string"
+                    },
+                    {
+                        "name": "sortedBy",
+                        "in": "query",
+                        "description": "Asc or Desc",
+                        "type": "string"
+                    },
+                    {
+                        "name": "page",
+                        "in": "query",
+                        "description": "Page number",
+                        "type": "integer"
+                    },
+                    {
+                        "name": "limit",
+                        "in": "query",
+                        "description": "Itens per page",
                         "type": "integer"
                     }
                 ],
                 "responses": {
                     "200": {
-                        "description": "User collection"
+                        "description": "Users collection"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Store a newly created resource in storage.",
+                "description": "User create",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "string"
+                                },
+                                "roles": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "User created"
+                    }
+                }
+            }
+        },
+        "/users/{id}": {
+            "get": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Display the specified resource.",
+                "description": "User Details",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "with",
+                        "in": "query",
+                        "description": "Add relationship",
+                        "type": "string"
+                    },
+                    {
+                        "name": "filter",
+                        "in": "query",
+                        "description": "Show only filtered",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User show"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Update the specified resource in storage.",
+                "description": "Update user",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                },
+                                "password": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                },
+                                "roles": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "array",
+                                    "items": {
+                                        "type": "integer"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "User updated"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "users"
+                ],
+                "summary": "Remove the specified resource from storage.",
+                "description": "Excluir usu\u00e1rio",
+                "parameters": [
+                    {
+                        "name": "Authorization",
+                        "in": "header",
+                        "description": "Bearer __token__",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "204": {
+                        "description": "No content"
                     }
                 }
             }
