@@ -24,10 +24,10 @@ class TopMenu
                     $menu->add($title);
 
                     if (Auth::user()->can('admin.users.index'))
-                        $menu->get(str_slug($title))->add(__('admin.users.index'), array('route' => 'admin.users.index'));
+                        $menu->get(str_slug($title))->add(__('general.users'), array('route' => 'admin.users.index'));
 
                     if (Auth::user()->can('admin.roles.index'))
-                        $menu->get(str_slug($title))->add(__('admin.roles.index'), array('route' => 'admin.roles.index'));
+                        $menu->get(str_slug($title))->add(__('general.roles'), array('route' => 'admin.roles.index'));
                 }
             });
         }

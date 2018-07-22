@@ -100,11 +100,7 @@ class UsersController extends Controller
     {
         $this->authorize('admin.users.edit', [$user->id]);
 
-        $roles = Role::all();
-
-        $roles->each(function ($role) use ($user) {
-            $role->check = $user->roles->contains($role);
-        });
+        $roles = Role::getChecked($user);
 
         return view('admin.users.edit', compact('user', 'roles'));
     }

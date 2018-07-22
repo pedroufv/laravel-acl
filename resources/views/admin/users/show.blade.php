@@ -9,15 +9,15 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <label class="col-md-3 control-label font-weight-bold">@lang('general.name')</label>
+                        <label class="col-md-3 font-weight-bold">@lang('general.name')</label>
                         <span>{{ $user->name }}</span>
                     </div>
                     <div class="row">
-                        <label class="col-md-3 control-label font-weight-bold">@lang('general.email')</label>
+                        <label class="col-md-3 font-weight-bold">@lang('general.email')</label>
                         <span>{{ $user->email }}</span>
                     </div>
                     <div class="row">
-                        <label class="col-md-3 control-label font-weight-bold">@lang('admin.roles.index')</label>
+                        <label class="col-md-3 font-weight-bold">@lang('general.roles')</label>
                         <span>{{ $user->roles->implode('name',', ') }}</span>
                     </div>
                 </div>

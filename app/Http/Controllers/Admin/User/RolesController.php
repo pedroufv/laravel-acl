@@ -2,11 +2,13 @@
 
 namespace Ancora\Http\Controllers\Admin\User;
 
+use Ancora\Entities\Permission;
+use Ancora\Entities\Role;
 use Ancora\Http\Controllers\Controller;
 use Ancora\Http\Requests\RoleCreateRequest;
 use Ancora\Http\Requests\RoleUpdateRequest;
-use Ancora\Repositories\RoleRepository;
 use Illuminate\Http\Response;
+use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class RolesController.
@@ -16,37 +18,40 @@ use Illuminate\Http\Response;
 class RolesController extends Controller
 {
     /**
-     * @var RoleRepository
-     */
-    protected $repository;
-
-    /**
-     * RolesController constructor.
-     *
-     * @param RoleRepository $repository
-     */
-    public function __construct(RoleRepository $repository)
-    {
-        $this->repository = $repository;
-    }
-
-    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        $roles = $this->repository->all();
+        return view('admin.roles.index');
+    }
 
-        if (request()->wantsJson()) {
+    public function data()
+    {
+        $roles = Role::select(['id', 'name', 'label']);
 
-            return response()->json([
-                'data' => $roles,
-            ]);
-        }
+        return Datatables::of($roles)
+            ->editColumn('name', function ($role){
+                return '<a href="'.route('admin.roles.show', ['id' => $role->id]).'">'.$role->name.'</a>';
+            })
+            ->addColumn('action', function ($role) {
+                return view('admin.partials.actions', ['id' => $role->id, 'table' => 'roles']);
+            })
+            ->rawColumns(['name', 'action'])
+            ->make(true);
+    }
 
-        return view('roles.index', compact('roles'));
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        $permissionsGrouped = Permission::getGroupedAndChecked();
+
+        return view('admin.roles.create', compact('employees', 'permissionsGrouped'));
     }
 
     /**
@@ -61,125 +66,84 @@ class RolesController extends Controller
     {
         try {
 
-            $role = $this->repository->create($request->all());
+            $role = Role::create($request->all());
+            $role->permissions()->sync($request->permissions);
 
-            $response = [
-                'message' => 'Role created.',
-                'data'    => $role->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('admin.roles.show', ['id' => $role->id])->with(['type' => 'success', 'message' => __('messages.success.store')]);
         } catch (\Exception $e) {
-            if ($request->wantsJson()) {
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessage()
-                ]);
-            }
 
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.create')])->withInput();
         }
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  Role $role
      *
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Role $role)
     {
-        $role = $this->repository->find($id);
+        $permissionsGrouped = Permission::getGroupedAndChecked($role);
 
-        if (request()->wantsJson()) {
-
-            return response()->json([
-                'data' => $role,
-            ]);
-        }
-
-        return view('roles.show', compact('role'));
+        return view('admin.roles.show', compact('role', 'permissionsGrouped'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param  Role $role
      *
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Role $role)
     {
-        $role = $this->repository->find($id);
+        $permissionsGrouped = Permission::getGroupedAndChecked($role);
 
-        return view('roles.edit', compact('role'));
+        return view('admin.roles.edit', compact('role', 'permissionsGrouped'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  RoleUpdateRequest $request
-     * @param  string            $id
+     * @param  Role $role
      *
      * @return Response
      *
      */
-    public function update(RoleUpdateRequest $request, $id)
+    public function update(RoleUpdateRequest $request, Role $role)
     {
         try {
 
-            $role = $this->repository->update($request->all(), $id);
+            $role->update($request->all());
+            $role->permissions()->sync($request->permissions);
 
-            $response = [
-                'message' => 'Role updated.',
-                'data'    => $role->toArray(),
-            ];
-
-            if ($request->wantsJson()) {
-
-                return response()->json($response);
-            }
-
-            return redirect()->back()->with('message', $response['message']);
+            return redirect()->route('admin.roles.show', ['id' => $role->id])->with(['type' => 'success', 'message' => __('messages.success.update')]);
         } catch (\Exception $e) {
 
-            if ($request->wantsJson()) {
-
-                return response()->json([
-                    'error'   => true,
-                    'message' => $e->getMessage()
-                ]);
-            }
-
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.update')])->withInput();
         }
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param  Role $role
      *
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Role $role)
     {
-        $deleted = $this->repository->delete($id);
+        try {
 
-        if (request()->wantsJson()) {
+            $role->delete();
 
-            return response()->json([
-                'message' => 'Role deleted.',
-                'deleted' => $deleted,
-            ]);
+            return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
+        } catch (\Exception $e) {
+
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.destroy')])->withInput();
         }
-
-        return redirect()->back()->with('message', 'Role deleted.');
     }
 }

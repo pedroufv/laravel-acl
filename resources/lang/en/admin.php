@@ -4,12 +4,17 @@ return [
     'config' => 'Config',
     'home' => 'Home',
     'roles' => [
-        'index' => 'Roles'
+        'index' => 'Roles List',
+        'create' => 'Roles Create',
+        'destroy' => 'Role Destroy',
+        'edit'  => 'Role Edit',
+        'show'  => 'Role Details',
     ],
     'users' => [
-        'index' => 'Users',
+        'index' => 'Users List',
         'create' => 'User Create',
+        'destroy' => 'User Destroy',
         'edit'  => 'User Edit',
-        'show'  => 'User details'
+        'show'  => 'User Details',
     ]
 ];
