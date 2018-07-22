@@ -1,8 +1,8 @@
 <?php
 
-namespace Ancora\Http\Controllers\Web\Auth;
+namespace LaravelACL\Http\Controllers\Web\Auth;
 
-use Ancora\Http\Controllers\Web\Controller;
+use LaravelACL\Http\Controllers\Web\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 
 class ForgotPasswordController extends Controller

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ancora\Repositories;
+namespace LaravelACL\Repositories;
 
-use Ancora\Criteria\CustomRequestCriteria;
-use Ancora\Entities\User;
+use LaravelACL\Criteria\CustomRequestCriteria;
+use LaravelACL\Entities\User;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class UserRepositoryEloquent.
  *
- * @package namespace Ancora\Repositories;
+ * @package namespace LaravelACL\Repositories;
  */
 class UserRepositoryEloquent extends BaseRepository implements UserRepository
 {

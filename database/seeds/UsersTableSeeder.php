@@ -11,6 +11,6 @@ class UsersTableSeeder extends Seeder
      */
     public function run()
     {
-        factory(Ancora\Entities\User::class, 2)->create();
+        factory(LaravelACL\Entities\User::class, 2)->create();
     }
 }

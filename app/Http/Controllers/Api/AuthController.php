@@ -1,9 +1,9 @@
 <?php
 
-namespace Ancora\Http\Controllers\Api;
+namespace LaravelACL\Http\Controllers\Api;
 
-use Ancora\Entities\User;
-use Ancora\Repositories\UserRepository;
+use LaravelACL\Entities\User;
+use LaravelACL\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use Tymon\JWTAuth\Exceptions\JWTException;
 

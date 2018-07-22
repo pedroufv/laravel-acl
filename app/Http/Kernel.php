@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http;
+namespace LaravelACL\Http;
 
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
@@ -16,9 +16,9 @@ class Kernel extends HttpKernel
     protected $middleware = [
         \Illuminate\Foundation\Http\Middleware\CheckForMaintenanceMode::class,
         \Illuminate\Foundation\Http\Middleware\ValidatePostSize::class,
-        \Ancora\Http\Middleware\TrimStrings::class,
+        \LaravelACL\Http\Middleware\TrimStrings::class,
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
-        \Ancora\Http\Middleware\TrustProxies::class,
+        \LaravelACL\Http\Middleware\TrustProxies::class,
     ];
 
     /**
@@ -28,14 +28,14 @@ class Kernel extends HttpKernel
      */
     protected $middlewareGroups = [
         'web' => [
-            \Ancora\Http\Middleware\EncryptCookies::class,
+            \LaravelACL\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
             \Illuminate\Session\Middleware\StartSession::class,
             // \Illuminate\Session\Middleware\AuthenticateSession::class,
             \Illuminate\View\Middleware\ShareErrorsFromSession::class,
-            \Ancora\Http\Middleware\VerifyCsrfToken::class,
+            \LaravelACL\Http\Middleware\VerifyCsrfToken::class,
             \Illuminate\Routing\Middleware\SubstituteBindings::class,
-            \Ancora\Http\Middleware\TopMenu::class,
+            \LaravelACL\Http\Middleware\TopMenu::class,
         ],
 
         'api' => [
@@ -58,10 +58,10 @@ class Kernel extends HttpKernel
         'bindings' => \Illuminate\Routing\Middleware\SubstituteBindings::class,
         'cache.headers' => \Illuminate\Http\Middleware\SetCacheHeaders::class,
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest' => \Ancora\Http\Middleware\RedirectIfAuthenticated::class,
+        'guest' => \LaravelACL\Http\Middleware\RedirectIfAuthenticated::class,
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'jwt.auth' => \Ancora\Http\Middleware\VerifyJWTToken::class,
+        'jwt.auth' => \LaravelACL\Http\Middleware\VerifyJWTToken::class,
         'cors' => \Barryvdh\Cors\HandleCors::class,
         'permission' => \Larapacks\Authorization\Middleware\PermissionMiddleware::class,
         'role' => \Larapacks\Authorization\Middleware\RoleMiddleware::class,

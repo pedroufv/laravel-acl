@@ -227,7 +227,7 @@ return [
     */
     'generator'  => [
         'basePath'      => app()->path(),
-        'rootNamespace' => 'Ancora\\',
+        'rootNamespace' => 'LaravelACL\\',
         'stubsOverridePath' => app()->path(),
         'paths'         => [
             'models'       => 'Entities',

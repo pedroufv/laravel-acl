@@ -67,7 +67,7 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => Ancora\Entities\User::class,
+            'model' => LaravelACL\Entities\User::class,
         ],
 
         // 'users' => [

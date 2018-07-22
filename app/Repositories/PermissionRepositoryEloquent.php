@@ -1,15 +1,15 @@
 <?php
 
-namespace Ancora\Repositories;
+namespace LaravelACL\Repositories;
 
-use Ancora\Criteria\CustomRequestCriteria;
-use Ancora\Entities\Permission;
+use LaravelACL\Criteria\CustomRequestCriteria;
+use LaravelACL\Entities\Permission;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class PermissionRepositoryEloquent.
  *
- * @package namespace Ancora\Repositories;
+ * @package namespace LaravelACL\Repositories;
  */
 class PermissionRepositoryEloquent extends BaseRepository implements PermissionRepository
 {

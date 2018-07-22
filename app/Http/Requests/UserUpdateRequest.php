@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Requests;
+namespace LaravelACL\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

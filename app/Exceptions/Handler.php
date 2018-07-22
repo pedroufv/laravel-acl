@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Exceptions;
+namespace LaravelACL\Exceptions;
 
 use Exception;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;

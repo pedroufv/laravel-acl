@@ -1,19 +1,19 @@
 <?php
 
-namespace Ancora\Http\Controllers\Web\Admin\User;
+namespace LaravelACL\Http\Controllers\Web\Admin\User;
 
-use Ancora\Entities\Role;
-use Ancora\Entities\User;
-use Ancora\Http\Controllers\Web\Controller;
-use Ancora\Http\Requests\UserCreateRequest;
-use Ancora\Http\Requests\UserUpdateRequest;
+use LaravelACL\Entities\Role;
+use LaravelACL\Entities\User;
+use LaravelACL\Http\Controllers\Web\Controller;
+use LaravelACL\Http\Requests\UserCreateRequest;
+use LaravelACL\Http\Requests\UserUpdateRequest;
 use Illuminate\Http\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class UsersController.
  *
- * @package namespace Ancora\Http\Controllers;
+ * @package namespace LaravelACL\Http\Controllers;
  */
 class UsersController extends Controller
 {

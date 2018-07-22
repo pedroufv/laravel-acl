@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Entities;
+namespace LaravelACL\Entities;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;

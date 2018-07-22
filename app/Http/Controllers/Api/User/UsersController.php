@@ -1,11 +1,11 @@
 <?php
 
-namespace Ancora\Http\Controllers\Api\User;
+namespace LaravelACL\Http\Controllers\Api\User;
 
-use Ancora\Http\Controllers\Api\Controller;
-use Ancora\Http\Requests\UserCreateRequest;
-use Ancora\Http\Requests\UserUpdateRequest;
-use Ancora\Repositories\UserRepository;
+use LaravelACL\Http\Controllers\Api\Controller;
+use LaravelACL\Http\Requests\UserCreateRequest;
+use LaravelACL\Http\Requests\UserUpdateRequest;
+use LaravelACL\Repositories\UserRepository;
 use Illuminate\Http\Request;
 
 

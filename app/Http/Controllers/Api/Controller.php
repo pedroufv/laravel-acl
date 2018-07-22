@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers\Api;
+namespace LaravelACL\Http\Controllers\Api;
 
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
@@ -13,7 +13,7 @@ abstract class Controller extends BaseController
 
     /**
      * @SWG\Swagger(basePath="/api",
-     *      @SWG\Info(title="Ancora", version="0.0.1")
+     *      @SWG\Info(title="LaravelACL", version="0.0.1")
      * )
      */
 }

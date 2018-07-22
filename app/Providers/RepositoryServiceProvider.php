@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Providers;
+namespace LaravelACL\Providers;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -23,9 +23,9 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(\Ancora\Repositories\UserRepository::class, \Ancora\Repositories\UserRepositoryEloquent::class);
-        $this->app->bind(\Ancora\Repositories\RoleRepository::class, \Ancora\Repositories\RoleRepositoryEloquent::class);
-        $this->app->bind(\Ancora\Repositories\PermissionRepository::class, \Ancora\Repositories\PermissionRepositoryEloquent::class);
+        $this->app->bind(\LaravelACL\Repositories\UserRepository::class, \LaravelACL\Repositories\UserRepositoryEloquent::class);
+        $this->app->bind(\LaravelACL\Repositories\RoleRepository::class, \LaravelACL\Repositories\RoleRepositoryEloquent::class);
+        $this->app->bind(\LaravelACL\Repositories\PermissionRepository::class, \LaravelACL\Repositories\PermissionRepositoryEloquent::class);
         //:end-bindings:
     }
 }

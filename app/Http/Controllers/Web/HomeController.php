@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Controllers\Web;
+namespace LaravelACL\Http\Controllers\Web;
 
 use Illuminate\Http\Request;
 

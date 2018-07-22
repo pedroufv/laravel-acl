@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Providers;
+namespace LaravelACL\Providers;
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
@@ -14,7 +14,7 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @var string
      */
-    protected $namespace = 'Ancora\Http\Controllers';
+    protected $namespace = 'LaravelACL\Http\Controllers';
 
     /**
      * Define your route model bindings, pattern filters, etc.

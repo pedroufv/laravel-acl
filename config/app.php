@@ -170,12 +170,12 @@ return [
         /*
          * Application Service Providers...
          */
-        Ancora\Providers\AppServiceProvider::class,
-        Ancora\Providers\AuthServiceProvider::class,
-        // Ancora\Providers\BroadcastServiceProvider::class,
-        Ancora\Providers\EventServiceProvider::class,
-        Ancora\Providers\RepositoryServiceProvider::class,
-        Ancora\Providers\RouteServiceProvider::class,
+        LaravelACL\Providers\AppServiceProvider::class,
+        LaravelACL\Providers\AuthServiceProvider::class,
+        // LaravelACL\Providers\BroadcastServiceProvider::class,
+        LaravelACL\Providers\EventServiceProvider::class,
+        LaravelACL\Providers\RepositoryServiceProvider::class,
+        LaravelACL\Providers\RouteServiceProvider::class,
 
     ],
 

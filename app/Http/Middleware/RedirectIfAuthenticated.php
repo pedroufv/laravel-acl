@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Middleware;
+namespace LaravelACL\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\Auth;

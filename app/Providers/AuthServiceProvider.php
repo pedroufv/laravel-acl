@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Providers;
+namespace LaravelACL\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
@@ -13,7 +13,7 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        'Ancora\Model' => 'Ancora\Policies\ModelPolicy',
+        'LaravelACL\Model' => 'LaravelACL\Policies\ModelPolicy',
     ];
 
     /**

@@ -1,15 +1,15 @@
 <?php
 
-namespace Ancora\Repositories;
+namespace LaravelACL\Repositories;
 
-use Ancora\Criteria\CustomRequestCriteria;
-use Ancora\Entities\Role;
+use LaravelACL\Criteria\CustomRequestCriteria;
+use LaravelACL\Entities\Role;
 use Prettus\Repository\Eloquent\BaseRepository;
 
 /**
  * Class RoleRepositoryEloquent.
  *
- * @package namespace Ancora\Repositories;
+ * @package namespace LaravelACL\Repositories;
  */
 class RoleRepositoryEloquent extends BaseRepository implements RoleRepository
 {

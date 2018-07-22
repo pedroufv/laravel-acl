@@ -1,9 +1,9 @@
 <?php
 
-namespace Ancora\Http\Controllers\Api\User;
+namespace LaravelACL\Http\Controllers\Api\User;
 
-use Ancora\Http\Controllers\Api\Controller;
-use Ancora\Repositories\RoleRepository;
+use LaravelACL\Http\Controllers\Api\Controller;
+use LaravelACL\Repositories\RoleRepository;
 
 
 class RolesController extends Controller

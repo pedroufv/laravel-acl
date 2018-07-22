@@ -30,7 +30,7 @@ return [
     ],
 
     'stripe' => [
-        'model' => Ancora\User::class,
+        'model' => LaravelACL\Entities\User::class,
         'key' => env('STRIPE_KEY'),
         'secret' => env('STRIPE_SECRET'),
     ],

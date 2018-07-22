@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Providers;
+namespace LaravelACL\Providers;
 
 use Illuminate\Support\ServiceProvider;
 

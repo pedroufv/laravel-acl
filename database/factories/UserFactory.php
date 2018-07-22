@@ -13,7 +13,7 @@ use Faker\Generator as Faker;
 |
 */
 
-$factory->define(Ancora\Entities\User::class, function (Faker $faker) {
+$factory->define(LaravelACL\Entities\User::class, function (Faker $faker) {
     return [
         'name' => $faker->name,
         'username' => $faker->unique()->userName,

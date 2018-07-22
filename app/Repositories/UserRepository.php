@@ -1,13 +1,13 @@
 <?php
 
-namespace Ancora\Repositories;
+namespace LaravelACL\Repositories;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 
 /**
  * Interface UserRepository.
  *
- * @package namespace Ancora\Repositories;
+ * @package namespace LaravelACL\Repositories;
  */
 interface UserRepository extends RepositoryInterface
 {

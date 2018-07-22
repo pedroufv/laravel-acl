@@ -31,7 +31,7 @@
             "database/factories"
         ],
         "psr-4": {
-            "Ancora\\": "app/"
+            "LaravelACL\\": "app/"
         }
     },
     "autoload-dev": {

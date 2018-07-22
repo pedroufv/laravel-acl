@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Http\Middleware;
+namespace LaravelACL\Http\Middleware;
 
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken as Middleware;
 

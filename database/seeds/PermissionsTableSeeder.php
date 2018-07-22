@@ -1,6 +1,6 @@
 <?php
 
-use Ancora\Entities\Permission;
+use LaravelACL\Entities\Permission;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;

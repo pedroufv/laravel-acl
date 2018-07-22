@@ -73,7 +73,7 @@ return [
     |
     */
 
-    'user' => 'Ancora\Entities\User',
+    'user' => 'LaravelACL\Entities\User',
 
     /*
     |--------------------------------------------------------------------------

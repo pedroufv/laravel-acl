@@ -1,6 +1,6 @@
 <?php
 
-namespace Ancora\Criteria;
+namespace LaravelACL\Criteria;
 
 use Prettus\Repository\Contracts\RepositoryInterface;
 use Prettus\Repository\Criteria\RequestCriteria;

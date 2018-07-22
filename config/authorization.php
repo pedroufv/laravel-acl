@@ -11,7 +11,7 @@ return [
     |
     */
 
-    'user' => Ancora\Entities\User::class,
+    'user' => LaravelACL\Entities\User::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -22,7 +22,7 @@ return [
     |
     */
 
-    'role' => Ancora\Entities\Role::class,
+    'role' => LaravelACL\Entities\Role::class,
 
     /*
     |--------------------------------------------------------------------------
@@ -33,6 +33,6 @@ return [
     |
     */
 
-    'permission' => Ancora\Entities\Permission::class,
+    'permission' => LaravelACL\Entities\Permission::class,
 
 ];

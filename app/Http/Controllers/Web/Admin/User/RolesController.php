@@ -1,19 +1,19 @@
 <?php
 
-namespace Ancora\Http\Controllers\Web\Admin\User;
+namespace LaravelACL\Http\Controllers\Web\Admin\User;
 
-use Ancora\Entities\Permission;
-use Ancora\Entities\Role;
-use Ancora\Http\Controllers\Web\Controller;
-use Ancora\Http\Requests\RoleCreateRequest;
-use Ancora\Http\Requests\RoleUpdateRequest;
+use LaravelACL\Entities\Permission;
+use LaravelACL\Entities\Role;
+use LaravelACL\Http\Controllers\Web\Controller;
+use LaravelACL\Http\Requests\RoleCreateRequest;
+use LaravelACL\Http\Requests\RoleUpdateRequest;
 use Illuminate\Http\Response;
 use Yajra\DataTables\Facades\DataTables;
 
 /**
  * Class RolesController.
  *
- * @package namespace Ancora\Http\Controllers;
+ * @package namespace LaravelACL\Http\Controllers;
  */
 class RolesController extends Controller
 {
