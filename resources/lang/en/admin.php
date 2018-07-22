@@ -8,6 +8,7 @@ return [
     ],
     'users' => [
         'index' => 'Users',
+        'create' => 'User Create',
         'edit'  => 'User Edit',
         'show'  => 'User details'
     ]

@@ -67,10 +67,12 @@ class UsersController extends Controller
         try {
 
             $user = User::create($request->all());
+            $user->roles()->sync($request->roles);
 
             return redirect()->route('admin.users.show', ['id' => $user->id])->with(['type' => 'success', 'message' => __('messages.success.store')]);
         } catch (\Exception $e) {
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.create')])->withInput();
         }
     }
 
@@ -124,11 +126,12 @@ class UsersController extends Controller
         try {
 
             $user->update($request->all());
+            $user->roles()->sync($request->roles);
 
             return redirect()->route('admin.users.show', ['id' => $user->id])->with(['type' => 'success', 'message' => __('messages.success.update')]);
         } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.update')])->withInput();
         }
     }
 
@@ -151,7 +154,7 @@ class UsersController extends Controller
             return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
         } catch (\Exception $e) {
 
-            return redirect()->back()->withErrors($e->getMessage())->withInput();
+            return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.destroy')])->withInput();
         }
     }
 }

@@ -24,7 +24,29 @@ class UserUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users,email,'.$this->route('user')->id,
+            'password' => 'string|min:6|confirmed',
+            'roles' => 'required',
         ];
+    }
+
+    /**
+     * Override: Get all of the input and files for the request.
+     *
+     * @param  array|mixed  $keys
+     * @return array
+     */
+    public function all($keys = null)
+    {
+        $attributes = parent::all($keys);
+
+        if(!$attributes['password'])
+            unset($attributes['password']);
+
+        if(!$attributes['password_confirmation'])
+            unset($attributes['password_confirmation']);
+
+        return $attributes;
     }
 }
