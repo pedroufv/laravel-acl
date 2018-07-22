@@ -12,5 +12,6 @@ return [
     'save'  => 'Save',
     'success' => 'Success!',
     'updated_at' => 'Updated at',
+    'username' => 'Username',
     'users' => 'Users'
 ];

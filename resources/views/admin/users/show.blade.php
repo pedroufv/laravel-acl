@@ -13,6 +13,10 @@
                         <span>{{ $user->name }}</span>
                     </div>
                     <div class="row">
+                        <label class="col-md-3 font-weight-bold">@lang('general.username')</label>
+                        <span>{{ $user->username }}</span>
+                    </div>
+                    <div class="row">
                         <label class="col-md-3 font-weight-bold">@lang('general.email')</label>
                         <span>{{ $user->email }}</span>
                     </div>

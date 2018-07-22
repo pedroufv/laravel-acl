@@ -23,6 +23,7 @@
                                 <tr>
                                     <th style="width: 5%;">ID</th>
                                     <th>@lang('general.name')</th>
+                                    <th>@lang('general.username')</th>
                                     <th>@lang('general.email')</th>
                                     <th>@lang('general.created_at')</th>
                                     <th>@lang('general.updated_at')</th>
@@ -48,6 +49,7 @@
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},
+                    {data: 'username', name: 'username'},
                     {data: 'email', name: 'email'},
                     {data: 'created_at', name: 'created_at'},
                     {data: 'updated_at', name: 'updated_at'},

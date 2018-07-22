@@ -29,7 +29,7 @@ class AuthController extends Controller
      *     @SWG\Parameter(
      *          name="body", in="body", required=true,
      *          @SWG\Schema(
-     *              @SWG\Property(property="email", type="string"),
+     *              @SWG\Property(property="username", type="string"),
      *              @SWG\Property(property="password", type="string"),
      *          )
      *     ),
@@ -40,13 +40,13 @@ class AuthController extends Controller
      */
     public function login(Request $request)
     {
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('username', 'password');
 
         try {
 
             /** @var User $user */
-            if (!$user = $this->repository->findByField('email', $credentials['email'])->first()) {
-                return response()->json(['error' => 'e-mail not find'], 401);
+            if (!$user = $this->repository->findByField('username', $credentials['username'])->first()) {
+                return response()->json(['error' => 'Username not found'], 401);
             }
 
             if (!$token = \JWTAuth::attempt($credentials, $user->customClaims())) {

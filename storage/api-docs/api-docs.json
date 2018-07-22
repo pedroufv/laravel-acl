@@ -19,7 +19,7 @@
                         "required": true,
                         "schema": {
                             "properties": {
-                                "email": {
+                                "username": {
                                     "description": "Request token JWT",
                                     "type": "string"
                                 },
@@ -335,6 +335,10 @@
                                     "description": "Store a newly created resource in storage.",
                                     "type": "string"
                                 },
+                                "password_confirmation": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "string"
+                                },
                                 "roles": {
                                     "description": "Store a newly created resource in storage.",
                                     "type": "array",
@@ -429,6 +433,10 @@
                                     "description": "Update the specified resource in storage.",
                                     "type": "string"
                                 },
+                                "password_confirmation": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                },
                                 "roles": {
                                     "description": "Update the specified resource in storage.",
                                     "type": "array",
@@ -451,7 +459,7 @@
                     "users"
                 ],
                 "summary": "Remove the specified resource from storage.",
-                "description": "Excluir usu\u00e1rio",
+                "description": "Remove user",
                 "parameters": [
                     {
                         "name": "Authorization",

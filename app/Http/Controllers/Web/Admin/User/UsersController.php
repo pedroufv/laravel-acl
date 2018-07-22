@@ -29,7 +29,7 @@ class UsersController extends Controller
 
     public function data()
     {
-        $users = User::select(['id', 'name', 'email', 'created_at', 'updated_at']);
+        $users = User::select(['id', 'name', 'username', 'email', 'created_at', 'updated_at']);
 
         return Datatables::of($users)
             ->editColumn('name', function ($user){

@@ -92,6 +92,10 @@ class UsersController extends Controller
      *              type="string"
      *          ),
      *          @SWG\Property(
+     *              property="username",
+     *              type="string"
+     *          ),
+     *          @SWG\Property(
      *              property="email",
      *              type="string"
      *          ),
@@ -174,6 +178,7 @@ class UsersController extends Controller
      *          name="body", in="body", required=true,
      *      @SWG\Schema(
      *          @SWG\Property(property="name", type="string"),
+     *          @SWG\Property(property="username", type="string"),
      *          @SWG\Property(property="email", type="string"),
      *          @SWG\Property(property="password", type="string"),
      *          @SWG\Property(property="password_confirmation", type="string"),
