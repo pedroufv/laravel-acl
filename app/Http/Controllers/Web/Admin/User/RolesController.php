@@ -133,9 +133,12 @@ class RolesController extends Controller
      * @param  Role $role
      *
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Auth\Access\AuthorizationException
      */
     public function destroy(Role $role)
     {
+        $this->authorize('admin.roles.destroy', [$role->id]);
+
         try {
 
             $role->delete();
