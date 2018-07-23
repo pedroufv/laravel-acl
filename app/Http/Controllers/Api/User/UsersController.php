@@ -64,14 +64,14 @@ class UsersController extends Controller
      *     @SWG\Response(response="200", description="Users collection")
      * )
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
     public function index(Request $request)
     {
-        $limit = $request->has('limit') ? $request->limit : 25;
-        $columns = $request->columns ? explode(';', $request->get('columns')) : ['*'];
+        $limit = $request->has('limit') ?? $request->limit;
 
-        return $this->repository->paginate($limit, $columns);
+        return $this->repository->paginate($limit);
     }
 
     /**

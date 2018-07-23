@@ -2,10 +2,9 @@
 
 namespace LaravelACL\Http\Controllers\Api;
 
+use Illuminate\Http\Request;
 use LaravelACL\Entities\User;
 use LaravelACL\Repositories\UserRepository;
-use Illuminate\Http\Request;
-use Tymon\JWTAuth\Exceptions\JWTException;
 
 class AuthController extends Controller
 {
@@ -37,27 +36,23 @@ class AuthController extends Controller
      *          response="200", description="Token JWT"
      *     )
      * )
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function login(Request $request)
     {
         $credentials = $request->only('username', 'password');
 
-        try {
+        /** @var User $user */
+        if (!$user = $this->repository->findByField('username', $credentials['username'])->first()) {
+            return response()->json(['error' => 'Username not found'], 401);
+        }
 
-            /** @var User $user */
-            if (!$user = $this->repository->findByField('username', $credentials['username'])->first()) {
-                return response()->json(['error' => 'Username not found'], 401);
-            }
+        if (!$token = \JWTAuth::attempt($credentials, $user->customClaims())) {
+            return response()->json(['error' => 'Invalid credentiais'], 401);
+        }
 
-            if (!$token = \JWTAuth::attempt($credentials, $user->customClaims())) {
-                return response()->json(['error' => 'Invalid credentiais'], 401);
-            }
-
-            \Auth::login($user);
-
-        } catch (JWTException $ex) {
-            return response()->json(['error' => 'Could not generate token'], 500);
-        };
+        auth()->login($user);
 
         return response()->json(compact('token'));
     }
@@ -75,12 +70,8 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        try {
-            \JWTAuth::invalidate();
-            \Auth::logout();
-        } catch (JWTException $ex) {
-            return response()->json(['error' => 'Could not invalidate token'], 500);
-        }
+        \JWTAuth::invalidate();
+        auth()->logout();
         return response()->json([], 204);
     }
 
@@ -94,15 +85,13 @@ class AuthController extends Controller
      *     ),
      *     @SWG\Response(response="200", description="Token JWT")
      * )
+     * @param Request $request
+     * @return \Illuminate\Http\JsonResponse
      */
     public function refreshToken(Request $request)
     {
-        try {
-            $bearerToken = \JWTAuth::setRequest($request)->getToken();
-            $token = \JWTAuth::refresh($bearerToken);
-        } catch (JWTException $exception) {
-            return response()->json(['error' => 'Failed to update token'], 500);
-        }
+        $bearerToken = \JWTAuth::setRequest($request)->getToken();
+        $token = \JWTAuth::refresh($bearerToken);
         return response()->json(compact('token'));
     }
 
@@ -123,7 +112,7 @@ class AuthController extends Controller
      *     @SWG\Response(response="200", description="Get auth user")
      * )
      */
-    public function me(Request $request)
+    public function me()
     {
         $user = \JWTAuth::parseToken()->toUser();
 

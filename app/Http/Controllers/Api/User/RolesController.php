@@ -2,6 +2,7 @@
 
 namespace LaravelACL\Http\Controllers\Api\User;
 
+use Illuminate\Http\Request;
 use LaravelACL\Http\Controllers\Api\Controller;
 use LaravelACL\Repositories\RoleRepository;
 
@@ -60,11 +61,14 @@ class RolesController extends Controller
      *     @SWG\Response(response="200", description="Roles collection")
      * )
      *
+     * @param Request $request
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return $this->repository->all();
+        $limit = $request->has('limit') ?? $request->limit;
+
+        return $this->repository->paginate($limit);
     }
 
     /**
