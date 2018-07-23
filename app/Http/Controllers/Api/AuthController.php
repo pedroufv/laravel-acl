@@ -110,7 +110,7 @@ class AuthController extends Controller
      * Get authenticated user
      * @SWG\Get(
      *     tags={"auth"},
-     *     path="/auth/user",
+     *     path="/me",
      *     @SWG\Parameter(
      *          name="Authorization", in="header", type="string", description="Bearer __token__"
      *     ),
@@ -123,7 +123,7 @@ class AuthController extends Controller
      *     @SWG\Response(response="200", description="Get auth user")
      * )
      */
-    public function user(Request $request)
+    public function me(Request $request)
     {
         $user = \JWTAuth::parseToken()->toUser();
 

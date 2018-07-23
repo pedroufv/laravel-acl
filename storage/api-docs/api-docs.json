@@ -1,7 +1,7 @@
 {
     "swagger": "2.0",
     "info": {
-        "title": "Ancora",
+        "title": "LaravelACL",
         "version": "0.0.1"
     },
     "basePath": "/api",
@@ -80,7 +80,7 @@
                 }
             }
         },
-        "/auth/user": {
+        "/me": {
             "get": {
                 "tags": [
                     "auth"
@@ -327,6 +327,10 @@
                                     "description": "Store a newly created resource in storage.",
                                     "type": "string"
                                 },
+                                "username": {
+                                    "description": "Store a newly created resource in storage.",
+                                    "type": "string"
+                                },
                                 "email": {
                                     "description": "Store a newly created resource in storage.",
                                     "type": "string"
@@ -422,6 +426,10 @@
                         "schema": {
                             "properties": {
                                 "name": {
+                                    "description": "Update the specified resource in storage.",
+                                    "type": "string"
+                                },
+                                "username": {
                                     "description": "Update the specified resource in storage.",
                                     "type": "string"
                                 },
