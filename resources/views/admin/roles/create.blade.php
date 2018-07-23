@@ -39,7 +39,7 @@
                                     <span class="font-weight-bold" style="margin-left: -5px;">{{ $key }}</span>
                                     <div class="col-md-12" style="padding-bottom: 10px">
                                         @foreach($grouped as $permission)
-                                            <input type="checkbox" class="form-check-input" name="permissions[]" id="{{ $permission->id }}" {{ in_array($permission->id, old("permissions")) ? 'checked="checked"' : ''}} value="{{ $permission->id }}">
+                                            <input type="checkbox" class="form-check-input" name="permissions[]" id="{{ $permission->id }}" {{ old("permissions") AND in_array($permission->id, old("permissions")) ? 'checked="checked"' : ''}} value="{{ $permission->id }}">
                                             <label class="form-check-label" style="min-width: 18%">@lang('permissions.'.$permission->nick)</label>
                                         @endforeach
                                     </div>
