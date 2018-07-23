@@ -59,7 +59,7 @@
                 }
             }
         },
-        "/refresh_token": {
+        "/refresh": {
             "post": {
                 "tags": [
                     "auth"

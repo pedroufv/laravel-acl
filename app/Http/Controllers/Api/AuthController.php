@@ -2,8 +2,6 @@
 
 namespace LaravelACL\Http\Controllers\Api;
 
-use Illuminate\Http\Request;
-use LaravelACL\Entities\User;
 use LaravelACL\Repositories\UserRepository;
 
 class AuthController extends Controller
@@ -16,6 +14,7 @@ class AuthController extends Controller
 
     public function __construct(UserRepository $repository)
     {
+        $this->middleware('auth:api', ['except' => ['login']]);
         $this->repository = $repository;
     }
 
@@ -36,29 +35,22 @@ class AuthController extends Controller
      *          response="200", description="Token JWT"
      *     )
      * )
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function login(Request $request)
+    public function login()
     {
-        $credentials = $request->only('username', 'password');
+        $credentials = request(['username', 'password']);
 
-        /** @var User $user */
-        if (!$user = $this->repository->findByField('username', $credentials['username'])->first()) {
-            return response()->json(['error' => 'Username not found'], 401);
+        if (! $token = auth('api')->attempt($credentials)) {
+            return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        if (!$token = \JWTAuth::attempt($credentials, $user->customClaims())) {
-            return response()->json(['error' => 'Invalid credentiais'], 401);
-        }
-
-        auth()->login($user);
-
-        return response()->json(compact('token'));
+        return $this->respondWithToken($token);
     }
 
     /**
      * To revoke token JWT
+     *
      * @SWG\Post(
      *     tags={"auth"},
      *     path="/logout",
@@ -70,33 +62,31 @@ class AuthController extends Controller
      */
     public function logout()
     {
-        \JWTAuth::invalidate();
         auth()->logout();
-        return response()->json([], 204);
+        return response()->json(['message' => 'Successfully logged out']);
     }
 
     /**
      * Refresh token JWT
+     *
      * @SWG\Post(
      *     tags={"auth"},
-     *     path="/refresh_token",
+     *     path="/refresh",
      *     @SWG\Parameter(
      *          name="Authorization", in="header", type="string", description="Bearer __token__"
      *     ),
      *     @SWG\Response(response="200", description="Token JWT")
      * )
-     * @param Request $request
      * @return \Illuminate\Http\JsonResponse
      */
-    public function refreshToken(Request $request)
+    public function refresh()
     {
-        $bearerToken = \JWTAuth::setRequest($request)->getToken();
-        $token = \JWTAuth::refresh($bearerToken);
-        return response()->json(compact('token'));
+        return $this->respondWithToken(auth('api')->refresh());
     }
 
     /**
      * Get authenticated user
+     *
      * @SWG\Get(
      *     tags={"auth"},
      *     path="/me",
@@ -114,11 +104,23 @@ class AuthController extends Controller
      */
     public function me()
     {
-        $user = \JWTAuth::parseToken()->toUser();
-
-        // needed for use criteria like 'with'
-        $user = $this->repository->find($user->id);
+        $user = $this->repository->find(auth()->id());
 
         return response()->json($user);
+    }
+
+    /**
+     * Get the token array structure.
+     *
+     * @param $token
+     * @return \Illuminate\Http\JsonResponse
+     */
+    protected function respondWithToken($token)
+    {
+        return response()->json([
+            'access_token' => $token,
+            'token_type' => 'bearer',
+            'expires_in' => auth('api')->factory()->getTTL() * 60
+        ]);
     }
 }

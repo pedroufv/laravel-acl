@@ -65,7 +65,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 3. npm install
 4. copy file .env.exemple and rename .env
 5. change the .env settings
-6. php artisan key:generate
+6. php artisan key:generate and php artisan jwt:secret
 7. php artisan migrate --seed
 8. see the usernamme in database with password 'secret'
 9. npm run dev

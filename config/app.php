@@ -158,7 +158,7 @@ return [
         Barryvdh\Cors\ServiceProvider::class,
         L5Swagger\L5SwaggerServiceProvider::class,
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
-        Tymon\JWTAuth\Providers\JWTAuthServiceProvider::class,
+//        Tymon\JWTAuth\Providers\LaravelServiceProvider::class,
 
         /*
          * Web Package Service Providers...
@@ -227,8 +227,6 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Menu'      => Lavary\Menu\Facade::class,
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
-        'JWTAuth' => Tymon\JWTAuth\Facades\JWTAuth::class,
-        'JWTFactory' => Tymon\JWTAuth\Facades\JWTFactory::class,
     ],
 
 ];
