@@ -49,31 +49,7 @@
                     {data: 'name', name: 'name'},
                     {data: 'label', name: 'label'},
                     {data: 'action', name: 'action', orderable: false, searchable: false}
-                ],
-                "language": {
-                    "decimal": "",
-                    "emptyTable": "Sem dados disponíveis na tabela",
-                    "info": "Exibindo _START_ até _END_ de _TOTAL_ entradas",
-                    "infoEmpty": "Exibindo 0 até 0 de 0 entradas",
-                    "infoFiltered": "(filtered from _MAX_ total entries)",
-                    "infoPostFix": "",
-                    "thousands": ",",
-                    "lengthMenu": "Mostrar _MENU_ registros",
-                    "loadingRecords": "Loading...",
-                    "processing": "Processando...",
-                    "search": "Busca:",
-                    "zeroRecords": "Nenhuma resultado encontrado",
-                    "paginate": {
-                        "first": "Primeiro",
-                        "last": "Último",
-                        "next": "Próximo",
-                        "previous": "Anterior"
-                    },
-                    "aria": {
-                        "sortAscending": ": activate to sort column ascending",
-                        "sortDescending": ": activate to sort column descending"
-                    }
-                }
+                ]
             });
         });
     </script>
