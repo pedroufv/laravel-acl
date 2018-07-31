@@ -18,6 +18,8 @@ class RolesController extends Controller
 
     public function __construct(RoleRepository $repository)
     {
+        parent::__construct();
+
         $this->repository = $repository;
     }
 
