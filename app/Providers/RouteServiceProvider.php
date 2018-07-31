@@ -79,6 +79,6 @@ class RouteServiceProvider extends ServiceProvider
         // common
         $route->group(base_path('routes/api.php'));
 
-        $route->middleware(['jwt.auth', 'role:administrator'])->group(base_path('routes/api/admin.php'));
+        $route->middleware(['jwt.auth'])->group(base_path('routes/api/admin.php'));
     }
 }
