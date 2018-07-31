@@ -42,6 +42,7 @@
             $('#roles-table').DataTable({
                 serverSide: true,
                 processing: true,
+                responsive: true,
                 ajax: '{{ url("admin/roles/data") }}',
                 columns: [
                     {data: 'id', name: 'id'},

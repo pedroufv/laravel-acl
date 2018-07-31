@@ -45,6 +45,7 @@
             $('#users-table').DataTable({
                 serverSide: true,
                 processing: true,
+                responsive: true,
                 ajax: '{{ url("admin/users/data") }}',
                 columns: [
                     {data: 'id', name: 'id'},
