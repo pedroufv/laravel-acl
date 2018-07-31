@@ -13,13 +13,13 @@ class Permission extends Model
     {
         return self::all()->mapToGroups(function ($permission) use ($role) {
             $exploded = explode('.', $permission->name);
-            $key = count($exploded) > 2 ? $exploded[1]: __('general.general');
+            $key = count($exploded) > 2 ? $exploded[1]: 'general';
             $permission->nick = count($exploded) > 2 ? $exploded[2] : $exploded[1];
 
             if($role)
                 $permission->check = $role->permissions->contains($permission);
 
-            return [title_case($key) => $permission];
+            return [__('general.'.$key) => $permission];
         });
     }
 }
