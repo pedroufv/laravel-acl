@@ -26,12 +26,12 @@ abstract class Controller extends BaseController
     private function addMiddlewarePermission()
     {
         if (Route::currentRouteName()) {
-            $this->middleware("permission:".
+            $this->middleware(['auth', 'permission:'.
                 preg_replace(
                     ['/data/', '/store/', '/update/'],
                     ['index', 'create', 'edit'],
                     Route::currentRouteName()
-                )
+                )]
             );
         }
     }

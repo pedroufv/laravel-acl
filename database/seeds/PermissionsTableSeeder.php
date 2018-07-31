@@ -17,7 +17,7 @@ class PermissionsTableSeeder extends Seeder
         /**
          *  Define permissoes para rotas do admin
          *
-         *  @var \Illuminate\Routing\Route $route
+         * @var \Illuminate\Routing\Route $route
          */
         foreach (Route::getRoutes() as $route) {
             if ($route->getPrefix() == 'admin'
@@ -39,28 +39,35 @@ class PermissionsTableSeeder extends Seeder
                     'role_id' => 1,
                 ]);
 
-                if($route->getName() == 'admin.users.edit') {
+                if ($route->getName() == 'admin.home') {
+                    DB::table('permission_role')->insert([
+                        'permission_id' => $id,
+                        'role_id' => 2,
+                    ]);
+                }
+
+                if ($route->getName() == 'admin.users.edit') {
                     $permission = Permission::find($id);
                     $permission->closure = function ($user, $id) {
-                        return $user->id == $id || $user->hasRole('administrator');
+                        return ($user->id == $id OR $user->hasRole('administrator')) AND $user->hasPermission('admin.users.edit');
                     };
 
                     $permission->save();
                 }
 
-                if($route->getName() == 'admin.users.destroy') {
+                if ($route->getName() == 'admin.users.destroy') {
                     $permission = Permission::find($id);
                     $permission->closure = function ($user, $id) {
-                        return $user->id != $id && $user->hasRole('administrator');
+                        return $user->id != $id AND $user->hasPermission('admin.users.destroy');
                     };
 
                     $permission->save();
                 }
 
-                if($route->getName() == 'admin.roles.destroy') {
+                if ($route->getName() == 'admin.roles.destroy') {
                     $permission = Permission::find($id);
                     $permission->closure = function ($user, $id) {
-                        return count($user->roles) == 1 && $user->roles->first()->id != $id && $user->hasRole('administrator');
+                        return $user->roles->count() == 1 AND $user->roles->first()->id != $id AND $user->hasPermission('admin.roles.destroy');
                     };
 
                     $permission->save();
