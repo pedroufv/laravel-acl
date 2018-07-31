@@ -17,8 +17,8 @@
                     </div>
                     <br/>
                     <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-bordered" id="roles-table">
+                        <div class="col-md-12 table-responsive-md">
+                            <table class="table table-bordered table-hover" id="roles-table">
                                 <thead>
                                 <tr>
                                     <th style="width: 5%;">ID</th>
