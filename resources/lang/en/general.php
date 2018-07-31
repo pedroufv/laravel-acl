@@ -5,6 +5,7 @@ return [
     'created_at' => 'Created at',
     'danger' => 'Ops!',
     'email' => 'E-mail',
+    'general' => 'General',
     'label' => 'Label',
     'name' => 'Name',
     'permissions' => 'Permissions',
