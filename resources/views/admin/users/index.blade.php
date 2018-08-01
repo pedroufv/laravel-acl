@@ -21,12 +21,12 @@
                             <ul class="nav nav-tabs justify-content-end">
                                 <li class="nav-item active">
                                     <a class="nav-link" data-toggle="tab" role="tab" href="#all-users">
-                                        <icon class="fa fa-users"> @lang('general.users')</icon>
+                                        <icon class="fa fa-bars"></icon>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#only-trashed">
-                                        <icon class="fa fa-trash"> @lang('general.trashed')</icon>
+                                        <icon class="fa fa-trash"></icon>
                                     </a>
                                 </li>
                             </ul>

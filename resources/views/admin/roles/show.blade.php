@@ -5,7 +5,11 @@
         <div class="row">
             <div class="card col-md-12">
                 <div class="card-header">
-                    <h3 class="card-title">@lang('admin.roles.show')</h3>
+                    <h3 class="card-title">@lang('admin.roles.show')
+                        @if($role->trashed())
+                            <span class="badge badge-pill badge-danger">@lang('general.trash')</span>
+                        @endif
+                    </h3>
                 </div>
                 <div class="card-body">
                     <div class="row">

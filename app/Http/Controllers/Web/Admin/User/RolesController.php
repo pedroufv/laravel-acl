@@ -31,6 +31,8 @@ class RolesController extends Controller
     {
         $roles = Role::select(['id', 'name', 'label']);
 
+        if (request('onlyTrashed')) $roles->onlyTrashed();
+
         return Datatables::of($roles)
             ->editColumn('name', function ($role){
                 return '<a href="'.route('admin.roles.show', ['id' => $role->id]).'">'.$role->name.'</a>';
