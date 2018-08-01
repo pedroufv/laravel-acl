@@ -29,14 +29,18 @@ class UsersController extends Controller
 
     public function data()
     {
-        $users = User::select(['id', 'name', 'username', 'email', 'created_at', 'updated_at']);
+        $users = User::select(['id', 'name', 'username', 'email', 'created_at', 'updated_at', 'deleted_at']);
+
+        if (request('withTrashed')) $users->withTrashed();
+
+        if (request('onlyTrashed')) $users->onlyTrashed();
 
         return Datatables::of($users)
             ->editColumn('name', function ($user){
-                return '<a href="'.route('admin.users.show', ['id' => $user->id]).'">'.$user->name.'</a>';
+                return '<a href="'.route('admin.users.show', ['id' => $user]).'">'.$user->name.'</a>';
             })
             ->addColumn('action', function ($user) {
-                return view('admin.partials.actions', ['id' => $user->id, 'table' => 'users']);
+                return view('admin.partials.actions', ['entity' => $user, 'table' => 'users']);
             })
             ->rawColumns(['name', 'action'])
             ->make(true);
@@ -145,7 +149,7 @@ class UsersController extends Controller
 
         try {
 
-            $user->delete();
+            $user->trashed() ? $user->restore() : $user->delete();
 
             return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
         } catch (\Exception $e) {

@@ -18,19 +18,51 @@
                     <br/>
                     <div class="row">
                         <div class="col-md-12 table-responsive-md">
-                            <table class="table table-bordered table-hover" id="users-table">
-                                <thead>
-                                <tr>
-                                    <th style="width: 5%;">ID</th>
-                                    <th>@lang('general.name')</th>
-                                    <th>@lang('general.username')</th>
-                                    <th>@lang('general.email')</th>
-                                    <th>@lang('general.created_at')</th>
-                                    <th>@lang('general.updated_at')</th>
-                                    <th style="width: 10%;">@lang('general.actions')</th>
-                                </tr>
-                                </thead>
-                            </table>
+                            <ul class="nav nav-tabs justify-content-end">
+                                <li class="nav-item active">
+                                    <a class="nav-link" data-toggle="tab" role="tab" href="#all-users">
+                                        <icon class="fa fa-users"> @lang('general.users')</icon>
+                                    </a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab" href="#only-trashed">
+                                        <icon class="fa fa-trash"> @lang('general.trashed')</icon>
+                                    </a>
+                                </li>
+                            </ul>
+                            <!-- Tab panes -->
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="all-users">
+                                    <table class="table table-bordered table-hover" id="users-table">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 5%;">ID</th>
+                                            <th>@lang('general.name')</th>
+                                            <th>@lang('general.username')</th>
+                                            <th>@lang('general.email')</th>
+                                            <th>@lang('general.created_at')</th>
+                                            <th>@lang('general.updated_at')</th>
+                                            <th style="width: 10%;">@lang('general.actions')</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                                <div class="tab-pane fade" id="only-trashed">
+                                    <table class="table table-bordered table-hover" id="users-trashed-table">
+                                        <thead>
+                                        <tr>
+                                            <th style="width: 5%;">ID</th>
+                                            <th>@lang('general.name')</th>
+                                            <th>@lang('general.username')</th>
+                                            <th>@lang('general.email')</th>
+                                            <th>@lang('general.created_at')</th>
+                                            <th>@lang('general.updated_at')</th>
+                                            <th style="width: 10%;">@lang('general.actions')</th>
+                                        </tr>
+                                        </thead>
+                                    </table>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -42,11 +74,36 @@
 @push('scripts')
     <script id="script">
         $(function () {
+            $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
+                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc();;
+            } );
+
             $('#users-table').DataTable({
                 serverSide: true,
                 processing: true,
                 responsive: true,
-                ajax: '{{ url("admin/users/data") }}',
+                ajax: {
+                    url: 'users/data'
+                },
+                columns: [
+                    {data: 'id', name: 'id'},
+                    {data: 'name', name: 'name'},
+                    {data: 'username', name: 'username'},
+                    {data: 'email', name: 'email'},
+                    {data: 'created_at', name: 'created_at'},
+                    {data: 'updated_at', name: 'updated_at'},
+                    {data: 'action', name: 'action', orderable: false, searchable: false}
+                ]
+            });
+
+            $('#users-trashed-table').DataTable({
+                serverSide: true,
+                processing: true,
+                responsive: true,
+                ajax: {
+                    url: 'users/data',
+                    data: {onlyTrashed: true}
+                },
                 columns: [
                     {data: 'id', name: 'id'},
                     {data: 'name', name: 'name'},

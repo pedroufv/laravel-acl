@@ -36,7 +36,7 @@ class RolesController extends Controller
                 return '<a href="'.route('admin.roles.show', ['id' => $role->id]).'">'.$role->name.'</a>';
             })
             ->addColumn('action', function ($role) {
-                return view('admin.partials.actions', ['id' => $role->id, 'table' => 'roles']);
+                return view('admin.partials.actions', ['entity' => $role, 'table' => 'roles']);
             })
             ->rawColumns(['name', 'action'])
             ->make(true);

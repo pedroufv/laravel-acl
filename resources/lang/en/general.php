@@ -12,6 +12,8 @@ return [
     'roles' => 'Roles',
     'save'  => 'Save',
     'success' => 'Success!',
+    'trash' => 'Trash',
+    'trashed' => 'Trashed',
     'updated_at' => 'Updated at',
     'username' => 'Username',
     'users' => 'Users'

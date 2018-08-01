@@ -23,9 +23,11 @@ class RouteServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
-
         parent::boot();
+
+        Route::bind('user', function ($id) {
+            return \LaravelACL\Entities\User::withTrashed()->find($id);
+        });
     }
 
     /**
