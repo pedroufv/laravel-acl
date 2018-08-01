@@ -28,6 +28,10 @@ class RouteServiceProvider extends ServiceProvider
         Route::bind('user', function ($id) {
             return \LaravelACL\Entities\User::withTrashed()->find($id);
         });
+
+        Route::bind('role', function ($id) {
+            return \LaravelACL\Entities\Role::withTrashed()->find($id);
+        });
     }
 
     /**

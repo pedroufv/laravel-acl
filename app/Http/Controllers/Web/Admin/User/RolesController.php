@@ -29,7 +29,7 @@ class RolesController extends Controller
 
     public function data()
     {
-        $roles = Role::select(['id', 'name', 'label']);
+        $roles = Role::select(['id', 'name', 'label', 'deleted_at']);
 
         if (request('onlyTrashed')) $roles->onlyTrashed();
 
@@ -143,7 +143,7 @@ class RolesController extends Controller
 
         try {
 
-            $role->delete();
+            $role->trashed() ? $role->restore() : $role->delete();
 
             return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
         } catch (\Exception $e) {
