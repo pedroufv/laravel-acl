@@ -8,6 +8,7 @@ return [
     ],
     'success' => [
         'destroy' => 'Destroyed successfully!',
+        'restore' => 'Restored successfully!',
         'store' => 'Stored successfully!',
         'update' => 'Updated successfully!',
     ],

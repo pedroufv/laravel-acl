@@ -143,9 +143,10 @@ class RolesController extends Controller
 
         try {
 
+            $message = $role->trashed() ? 'messages.success.restore' : 'messages.success.destroy';
             $role->trashed() ? $role->restore() : $role->delete();
 
-            return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
+            return redirect()->back()->with(['type' => 'success', 'message' => __($message)]);
         } catch (\Exception $e) {
 
             return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.destroy')])->withInput();

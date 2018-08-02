@@ -149,9 +149,10 @@ class UsersController extends Controller
 
         try {
 
+            $message = $user->trashed() ? 'messages.success.restore' : 'messages.success.destroy';
             $user->trashed() ? $user->restore() : $user->delete();
 
-            return redirect()->back()->with(['type' => 'success', 'message' => __('messages.success.destroy')]);
+            return redirect()->back()->with(['type' => 'success', 'message' => __($message)]);
         } catch (\Exception $e) {
 
             return redirect()->back()->with(['type' => 'danger', 'message' => __('messages.danger.destroy')])->withInput();
