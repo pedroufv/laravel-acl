@@ -4,21 +4,24 @@
     <div class="container">
         <div class="row">
             <div class="card col-md-12">
-                <div class="card-header">
-                    <h3 class="card-title">@lang('admin.roles.show')
-                        @if($role->trashed())
+                <div class="card-header row">
+                    <h3 class="card-title col-md-10">@lang('admin.roles.show')
+                        @if($entity->trashed())
                             <span class="badge badge-pill badge-danger">@lang('general.trash')</span>
                         @endif
                     </h3>
+                    <div class="col-md-2">
+                        @include('admin.partials.actions')
+                    </div>
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <label class="col-md-3 font-weight-bold">@lang('general.name')</label>
-                        <span>{{ $role->name }}</span>
+                        <span>{{ $entity->name }}</span>
                     </div>
                     <div class="row">
                         <label class="col-md-3 font-weight-bold">@lang('general.label')</label>
-                        <span>{{ $role->label }}</span>
+                        <span>{{ $entity->label }}</span>
                     </div>
                     <div class="row">
                         <label class="col-md-3 font-weight-bold">@lang('general.permissions')</label>

@@ -82,6 +82,7 @@
                 serverSide: true,
                 processing: true,
                 responsive: true,
+                order: [ [0, 'desc'] ],
                 ajax: {
                     url: 'users/data'
                 },

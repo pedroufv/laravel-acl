@@ -89,7 +89,7 @@ class RolesController extends Controller
     {
         $permissionsGrouped = Permission::getGroupedAndChecked($role);
 
-        return view('admin.roles.show', compact('role', 'permissionsGrouped'));
+        return view('admin.roles.show', ['entity' => $role, 'table' => 'roles', 'permissionsGrouped' => $permissionsGrouped]);
     }
 
     /**
