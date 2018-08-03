@@ -13745,8 +13745,18 @@ a.text-dark:focus {
   background-color: transparent;
 }
 
+.navbar {
+  padding: 0 1rem;
+}
+
 .navbar-laravel {
   background-color: #fff;
+  -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
+}
+
+li.dropdown.active {
+  background-color: #eee;
   -webkit-box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
           box-shadow: 0 2px 4px rgba(0, 0, 0, 0.04);
 }

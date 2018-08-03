@@ -19,6 +19,8 @@ class TopMenu
         if (Auth::check()) {
             \Menu::make('topMenu', function($menu) {
 
+
+
                 if (Auth::user()->can('admin.users.index') OR Auth::user()->can('admin.roles.index')) {
                     $title = __('admin.config');
                     $menu->add($title);
@@ -28,7 +30,12 @@ class TopMenu
 
                     if (Auth::user()->can('admin.roles.index'))
                         $menu->get(str_slug($title))->add(__('general.roles'), array('route' => 'admin.roles.index'));
+
+                    if ($menu->get(str_slug($title))->children()->contains('link.isActive', true))
+                        $menu->get(str_slug($title))->active();
                 }
+
+
             });
         }
 
