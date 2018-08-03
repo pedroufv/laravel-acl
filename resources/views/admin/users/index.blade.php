@@ -9,27 +9,29 @@
                 </div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-md-4">
-                            <a href="{{ route('admin.users.create') }}" class="btn btn-primary">
-                                <span class='fa fa-plus'></span>
-                            </a>
-                        </div>
-                    </div>
-                    <br/>
-                    <div class="row">
                         <div class="col-md-12 table-responsive-md">
-                            <ul class="nav nav-tabs justify-content-end">
-                                <li class="nav-item active">
-                                    <a class="nav-link" data-toggle="tab" role="tab" href="#all-users">
-                                        <i class="fa fa-bars"></i>
+                            <div class="row">
+                                <div class="col-md-2">
+                                    <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">
+                                        <span class='fa fa-plus'></span>
                                     </a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" data-toggle="tab" href="#only-trashed">
-                                        <i class="fa fa-trash"></i>
-                                    </a>
-                                </li>
-                            </ul>
+                                </div>
+                                <div class="offset-7 col-md-3">
+                                    <ul class="nav nav-tabs justify-content-end">
+                                        <li class="nav-item active">
+                                            <a class="nav-link" data-toggle="tab" role="tab" href="#all-users">
+                                                <i class="fa fa-bars"></i>
+                                            </a>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link" data-toggle="tab" href="#only-trashed">
+                                                <i class="fa fa-trash"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <br/>
                             <!-- Tab panes -->
                             <div class="tab-content">
                                 <div class="tab-pane fade show active" id="all-users">
@@ -75,7 +77,7 @@
     <script id="script">
         $(function () {
             $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc();
+                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust();
             } );
 
             $('#users-table').DataTable({
