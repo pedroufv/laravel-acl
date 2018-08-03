@@ -8,7 +8,7 @@
                 <div class="card-header row">
                     <h3 class="card-title col-md-10">@lang('admin.users.show')
                         @if($entity->trashed())
-                            <span class="badge badge-pill badge-danger">@lang('general.trash')</span>
+                            <span class="badge badge-pill badge-primary">@lang('general.trash')</span>
                         @endif
                     </h3>
                     <div class="col-md-2">
