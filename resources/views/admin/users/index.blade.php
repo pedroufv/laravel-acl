@@ -21,12 +21,12 @@
                             <ul class="nav nav-tabs justify-content-end">
                                 <li class="nav-item active">
                                     <a class="nav-link" data-toggle="tab" role="tab" href="#all-users">
-                                        <icon class="fa fa-bars"></icon>
+                                        <i class="fa fa-bars"></i>
                                     </a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" data-toggle="tab" href="#only-trashed">
-                                        <icon class="fa fa-trash"></icon>
+                                        <i class="fa fa-trash"></i>
                                     </a>
                                 </li>
                             </ul>
@@ -75,7 +75,7 @@
     <script id="script">
         $(function () {
             $('a[data-toggle="tab"]').on( 'shown.bs.tab', function (e) {
-                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc();;
+                $.fn.dataTable.tables( {visible: true, api: true} ).columns.adjust().responsive.recalc();
             } );
 
             $('#users-table').DataTable({
