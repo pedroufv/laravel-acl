@@ -14,8 +14,9 @@
 // DataTables Bootstrap4
 @import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
 
-.breadcrumb {
+..breadcrumb {
   background-color: transparent;
+  padding: 0 1rem;
 }
 
 .card-body {

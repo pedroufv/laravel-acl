@@ -12,7 +12,7 @@
                         <div class="col-md-12 table-responsive-md">
                             <div class="row">
                                 <div class="col-md-2">
-                                    <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary">
+                                    <a href="{{ route('admin.users.create') }}" class="btn btn-sm btn-primary" style="margin-top:0.5rem">
                                         <span class='fa fa-plus'></span>
                                     </a>
                                 </div>

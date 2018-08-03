@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-            <div class="card col-md-8">
+            <div class="card col-md-12">
                 <div class="card-header">
                     <h4 class="card-title">@lang('admin.users.create')</h4>
                 </div>
