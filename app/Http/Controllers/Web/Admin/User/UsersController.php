@@ -55,7 +55,7 @@ class UsersController extends Controller
     {
         $roles = Role::all();
 
-        return view('admin.users.create', compact('employees', 'roles'));
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
