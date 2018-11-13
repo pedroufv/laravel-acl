@@ -70,3 +70,13 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 8. see the usernamme in database with password 'secret'
 9. npm run dev
 
+## Used Packages
+API 
+- https://github.com/DarkaOnLine/L5-Swagger
+- https://github.com/barryvdh/laravel-cors
+- https://github.com/andersao/l5-repository
+
+Web
+- https://github.com/davejamesmiller/laravel-breadcrumbs
+- https://github.com/lavary/laravel-menu
+- https://github.com/yajra/laravel-datatables
