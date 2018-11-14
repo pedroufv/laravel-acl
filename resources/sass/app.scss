@@ -6,13 +6,13 @@
 @import "variables";
 
 // Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import '../../node_modules/bootstrap/scss/bootstrap';
 
 // Font Awesome
-@import "~font-awesome/scss/font-awesome.scss";
+@import "../../node_modules/font-awesome/scss/font-awesome";
 
 // DataTables Bootstrap4
-@import "~datatables.net-bs4/css/dataTables.bootstrap4.css";
+@import "../../node_modules/datatables.net-bs4/css/dataTables.bootstrap4.css";
 
 .breadcrumb {
   background-color: transparent;
